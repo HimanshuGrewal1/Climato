@@ -1,0 +1,27 @@
+[
+    {
+      "_id": 1,
+      "subreddit": "r/IndiaSpeaks",
+      "timeAgo": "10 hr. ago",
+      "title": "No income tax payable up to income of 12 Lakhs!!!",
+      "tag": "#BudgetWith",
+      "source": "TOI",
+      "breakingNews": "BREAKING NEWS",
+      "content": "No income tax payable up to the income of Rs 12 lakh, announces FM Nirmala Sitharaman",
+      "likes": 2900,
+      "comments": 394
+    },
+    {
+      "id": 2,
+      "subreddit": "r/WorldNews",
+      "timeAgo": "5 hr. ago",
+      "title": "Major breakthrough in AI research!",
+      "tag": "#TechNews",
+      "source": "BBC",
+      "breakingNews": "LATEST UPDATE",
+      "content": "Researchers have developed a new AI model that outperforms previous versions in complex problem-solving.",
+      "likes": 4500,
+      "comments": 512
+    }
+  ]
+  
