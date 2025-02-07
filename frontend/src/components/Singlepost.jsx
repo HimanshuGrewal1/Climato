@@ -1,18 +1,46 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useState } from "react";
 import { Button } from "./ui/Button";
 import { Clock, MoreHorizontal } from "lucide-react";
 import postImage from "../assets/post1.png";
 import { ArrowUp, ArrowDown, MessageCircle, Gift, Share2 } from "lucide-react";
 import { Link } from 'react-router-dom'
+import { useParams } from "react-router-dom"
 
 
 
-const PostItem = ({post}) => {
+const PostItem = () => {
+  const { id } = useParams();
+   const [posts, setPosts] = useState([]);
+  
+    const fetchPosts = async () => {
+      try {
+        const res = await fetch("/feed.json");
+        if (!res.ok) throw new Error("Failed to fetch posts");
+        
+        const data = await res.json();
+        setPosts(data.map(post => ({ ...post, votes: post.votes || 0 }))); // Ensure votes exist
+      } catch (error) {
+        console.error("Error fetching posts:", error);
+      }
+    };
+  
+    useEffect(() => {
+      fetchPosts();
+    }, []);
+    const [post, setPost] = useState(null); 
+
+    useEffect(() => {
+        const filteredPost = posts.filter(post => post.id === id);
+        setPost(filteredPost);
+    }, [id, posts]); 
+    
+  
+    
     const [joined, setJoined] = useState(false);
     const [votes, setVotes] = useState(3300);
     const [voted, setVoted] = useState(null); // null, "up", or "down"
-   console.log(post.id)
+   
     const handleVote = (type) => {
         if (voted === type) {
             setVotes(type === "up" ? votes - 1 : votes + 1);
@@ -72,12 +100,12 @@ const PostItem = ({post}) => {
       </div>
 
       {/* Comments */}
-      <Link to={`/post/${post.id}`}>
+      
       <div className="flex items-center space-x-1 bg-gray-800 px-3 py-1 rounded-full" >
         <MessageCircle size={18} className="text-gray-400" />
         <span className="text-sm">318</span>
       </div>
-      </Link>
+    
 
       {/* Awards */}
       <div className="flex items-center bg-gray-800 px-3 py-1 rounded-full">
