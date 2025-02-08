@@ -9,6 +9,7 @@ import Chat from "../pages/Chat"
 import Login from "../pages/Login"
 import Register from "../pages/Register"
 import Singlepostpage from "../pages/Singlepostpage";
+import FF from "../pages/FF";
 
 
 
@@ -24,7 +25,7 @@ const router= createBrowserRouter([
             },
             {
                 index: true, // This makes KK the default page inside App
-                element: <KK />
+                element: <FF />
             },
             {
                 path:"/chat",
